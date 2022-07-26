@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import "./App.css";
 
-function App() { 
+function App() {
 
   let [title1, title1change] = useState(['남자 코트 추천', '남자 바지 추천', '남자 모자 추천']);
   let [like, likeUp] = useState(0);
+  let [modal, setModal] = useState(false)
 
   return (
     <div className="App">
@@ -25,7 +26,9 @@ function App() {
         <p>7월 22일 발행</p>
       </div>
       <div className="list">
-        <h4>{title1[2]}</h4>
+        <h4 onClick={() => {
+          setModal(!modal)
+        }}>{title1[2]}</h4>
         <p>7월 22일 발행</p>
       </div>
       <button style={{ marginTop: '10px' }} onClick={() => {
@@ -35,7 +38,9 @@ function App() {
       }}>
         정렬하기
       </button>
-      <Modal/>
+      {
+        modal == true ? <Modal /> : null
+      }
     </div>
   );
 }
